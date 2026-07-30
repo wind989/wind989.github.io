@@ -1,16 +1,16 @@
 (() => {
   const overlay = document.getElementById("entry-overlay");
   const enterButton = document.getElementById("enter-site");
-  const storageKey = "wind989-entry-seen";
+  const storageKey = "wind989-entry-seen-in-session";
   const replay = new URLSearchParams(window.location.search).has("welcome");
 
   if (!overlay || !enterButton) return;
 
   let hasVisited = false;
   try {
-    hasVisited = window.localStorage.getItem(storageKey) === "true";
+    hasVisited = window.sessionStorage.getItem(storageKey) === "true";
   } catch (_) {
-    // 浏览器禁用本地存储时，欢迎动画会在每次新打开页面时播放。
+    // 浏览器禁用会话存储时，欢迎动画会在每次刷新时播放。
   }
 
   if (hasVisited && !replay) return;
@@ -29,9 +29,9 @@
     if (overlay.classList.contains("entry-overlay--leaving")) return;
 
     try {
-      window.localStorage.setItem(storageKey, "true");
+      window.sessionStorage.setItem(storageKey, "true");
     } catch (_) {
-      // 本地存储不可用时，不影响进入网站。
+      // 会话存储不可用时，不影响进入网站。
     }
 
     overlay.classList.add("entry-overlay--leaving");
