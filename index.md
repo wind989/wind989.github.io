@@ -3,6 +3,19 @@ layout: default
 title: 首页
 ---
 
+<section class="entry-overlay" id="entry-overlay" aria-hidden="true" aria-labelledby="entry-title">
+  <div class="entry-overlay__stars" aria-hidden="true"></div>
+  <div class="entry-overlay__content">
+    <p class="entry-overlay__eyebrow">WIND989 · PERSONAL BLOG</p>
+    <h1 class="entry-overlay__title" id="entry-title"><span>欢迎来到</span><strong>我的个人博客</strong></h1>
+    <p class="entry-overlay__subtitle">记录每一次探索，也连接下一次成长。</p>
+    <button class="entry-overlay__enter" id="enter-site" type="button">
+      <span>进入网站</span><i aria-hidden="true">↓</i>
+    </button>
+    <p class="entry-overlay__hint">点击开启探索</p>
+  </div>
+</section>
+
 <section class="hero" aria-labelledby="hero-title">
   <div class="hero__content">
     <p class="eyebrow">STUDENT · BACKEND · AI</p>
@@ -106,3 +119,5 @@ stack = [
   <p>Learning in public</p>
   <h2>代码、笔记和思考，都会成为下一步的底气。</h2>
 </section>
+
+<script src="{{ '/assets/js/entry.js' | relative_url }}" defer></script>
