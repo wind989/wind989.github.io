@@ -1,2 +1,2 @@
 # wind989.github.io
-My own blog.
+Welcom to my own blog.
