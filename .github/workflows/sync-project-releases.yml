@@ -11,6 +11,7 @@ on:
       - "scripts/sync_releases.py"
   schedule:
     # Daily at 09:17 China Standard Time (01:17 UTC).
+    # Also refreshes when the sync workflow configuration changes.
     - cron: "17 1 * * *"
 
 permissions:
