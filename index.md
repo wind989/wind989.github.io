@@ -115,6 +115,50 @@ stack = [
   {% endif %}
 </section>
 
+<section class="projects" id="projects" aria-labelledby="projects-title">
+  <div class="section-title-row">
+    <div>
+      <p class="section-kicker">SELECTED PROJECTS</p>
+      <h2 id="projects-title">项目与最新发布</h2>
+    </div>
+    <span class="focus-status"><i></i> Release 自动同步</span>
+  </div>
+
+  <div class="project-grid">
+    {% for project in site.data.projects %}
+    {% assign project_releases = site.data.releases.items | where: "repo", project.repo %}
+    <article class="project-card">
+      <div class="project-card__top">
+        <span class="project-card__label">PROJECT</span>
+        <span class="project-card__repo">{{ project.repo }}</span>
+      </div>
+      <h3>{{ project.name }}</h3>
+      <p class="project-card__description">{{ project.description }}</p>
+      <a class="project-card__link" href="{{ project.url }}" target="_blank" rel="noopener">查看 GitHub 仓库 <span aria-hidden="true">↗</span></a>
+
+      <div class="project-releases">
+        <div class="project-releases__heading">最近发布</div>
+        {% if project_releases.size > 0 %}
+        <ul>
+          {% for release in project_releases limit: 3 %}
+          <li>
+            <div class="release-line">
+              <a href="{{ release.url }}" target="_blank" rel="noopener">{{ release.name | escape }}</a>
+              <time datetime="{{ release.published_at }}">{{ release.published_at | date: "%Y.%m.%d" }}</time>
+            </div>
+            {% if release.summary %}<p>{{ release.summary | escape }}</p>{% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p class="project-releases__empty">暂无公开 Release，发布后会自动出现在这里。</p>
+        {% endif %}
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
 <section class="closing-note">
   <p>Learning in public</p>
   <h2>代码、笔记和思考，都会成为下一步的底气。</h2>
