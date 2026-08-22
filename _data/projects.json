@@ -1,0 +1,14 @@
+[
+  {
+    "name": "RepoMind",
+    "repo": "wind989/repomind",
+    "description": "可追溯混合检索的后端项目文档知识库服务",
+    "url": "https://github.com/wind989/repomind"
+  },
+  {
+    "name": "TicketInsight",
+    "repo": "wind989/TicketInsight",
+    "description": "Customer ticket analytics and operations decision platform",
+    "url": "https://github.com/wind989/TicketInsight"
+  }
+]
