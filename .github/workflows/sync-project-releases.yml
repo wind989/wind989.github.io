@@ -1,0 +1,40 @@
+name: Sync project releases
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Daily at 09:17 China Standard Time (01:17 UTC).
+    - cron: "17 1 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the blog
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Fetch public project releases
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/sync_releases.py
+
+      - name: Commit changed release data
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add _data/releases.json
+          if git diff --cached --quiet; then
+            echo "No release changes to commit."
+            exit 0
+          fi
+          git commit -m "chore: sync project releases"
+          git push
