@@ -1,0 +1,13 @@
+<header class="site-header">
+  <div class="wrapper header-inner">
+    <a class="site-brand" href="{{ '/' | relative_url }}" aria-label="wind989 的技术博客首页">
+      <span class="brand-star" aria-hidden="true">✦</span>
+      <strong>wind989</strong><span class="brand-caption">的技术博客</span>
+    </a>
+    <nav class="desktop-nav" aria-label="主导航">{% include navigation.html %}</nav>
+    <details class="mobile-nav">
+      <summary>菜单 <span aria-hidden="true">☰</span></summary>
+      <nav aria-label="手机端主导航">{% include navigation.html %}</nav>
+    </details>
+  </div>
+</header>
