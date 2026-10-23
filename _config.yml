@@ -4,3 +4,9 @@ description: 记录 Python 后端与 AI Agent 学习
 lang: zh-CN
 url: "https://wind9.xyz"
 baseurl: ""
+timezone: Asia/Shanghai
+author: wind989
+date_format: "%Y年%m月%d日"
+exclude:
+  - wind989-github-pages-sync
+  - _deployment
